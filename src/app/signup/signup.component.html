@@ -146,7 +146,7 @@
         <div class="row col-12">
             <div class="form-group col">
               <label for="pin">Pin code</label>
-              <input type="text" class="form-control" id="pin" formControlName="email"  placeholder="Enter Pin">
+              <input type="text" class="form-control" id="pin" formControlName="pincode"  placeholder="Enter Pin">
               <div *ngIf="userregisterForm.controls['pincode']?.touched || userregisterForm.controls['pincode']?.dirty">
                 <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'pincode')">minimun 6 digits required</div>
               </div>
