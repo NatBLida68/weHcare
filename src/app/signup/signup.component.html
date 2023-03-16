@@ -1,0 +1,189 @@
+<div  *ngIf="coach" class="container mt-5" id="coach">
+    <div class="row">
+      <div class="col rounded" style="background-color:black;margin-left: 20%; margin-right: 20%;">
+        <div class="container ">
+            <div class="col m-3 text-center">
+         <h5><img src="/assets/Images/LifeCoachLogIn.jpg" class="text-center" width="50" height="50">Life Coach Profile</h5>
+    </div>
+    <div class="col">
+        <form>
+            <div class="row col-12">
+            <div class="form-group col">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name"  placeholder="Enter Name">
+            </div>
+            <div class="form-group col">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+        </div>
+
+        <div class="row col-12">
+            <div class="form-group col">
+              <label for="dob">Date of Birth</label>
+              <input type="text" class="form-control" id="dob"  placeholder="mm/dd/yyyy">
+            </div>
+            
+            <div class="form-group col">
+                <label for="gender">Gender</label>
+                <div id="gender">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="male">
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="female">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                      </div>
+                </div>
+                  
+            </div>
+        </div>
+
+
+        <div class="row col-12">
+            <div class="form-group col">
+              <label for="mobile">Mobile No</label>
+              <input type="text" class="form-control" id="mobile"  placeholder="Enter mobile">
+            </div>
+            <div class="form-group col">
+              <label for="speciality">Speciality</label>
+              <input type="text" class="form-control" id="speciality" placeholder="speciality">
+            </div>
+        </div>
+        
+        <div class="col text-center">
+            <button type="submit" class="btn btn-success col-6 mb-5">Submit</button>
+        </div>
+          </form>
+    </div>
+    </div>
+      </div>
+    </div>
+</div>
+
+<!--
+    user part
+-->
+<div  *ngIf="user" class="container mt-5" id="user">
+    <div class="row">
+      <div class="col rounded" style="background-color:black;margin-left: 20%; margin-right: 20%;">
+        <div class="container ">
+            <div class="col m-3 text-center">
+         <h5><img src="/assets/Images/UserLogIn.jpg" class="text-center" width="50" height="50">User Profile</h5>
+    </div>
+    <div class="col">
+        <form  [formGroup]="userregisterForm" (ngSubmit)="userSignup()">
+            <div class="row col-12">
+            <div class="form-group col">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name"  placeholder="Enter Name">
+              <div *ngIf="userregisterForm.controls['name']?.touched || userregisterForm.controls['name']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('required', 'name')">Please choose an name</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'name')">minimun 3 letters required</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('maxlength', 'name')">max 50 letters allowed </div>
+              </div>
+    
+            </div>
+            <div class="form-group col">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+              <div *ngIf="userregisterForm.controls['password']?.touched || userregisterForm.controls['password']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('required', 'password')">Please enter a password</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'password')">minimun 5 letters required</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('maxlength', 'password')">max 10 letters allowed</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="row col-12">
+            <div class="form-group col">
+              <label for="dob">Date of Birth</label>
+              <input type="text" class="form-control" id="dob" formControlName="dateOfBirth" placeholder="mm/dd/yyyy">
+              <div *ngIf="userregisterForm.controls['dateOfBirth']?.touched || userregisterForm.controls['dateOfBirth']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('required', 'dateOfBirth')">Please enter DOB</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('age', 'dateOfBirth')">age should be in between 20 and 100</div>
+              </div>
+            </div>
+            
+            <div class="form-group col">
+                <label for="gender">Gender</label>
+                <div id="gender">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="male">
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="female">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                      </div>
+                      <div *ngIf="userregisterForm.controls['gender']?.touched || userregisterForm.controls['gender']?.dirty">
+                        <div style="color: red;" *ngIf="userregisterForm.hasError('required', 'gender')">required</div>
+                      </div>
+                </div>
+                  
+            </div>
+        </div>
+
+
+        <div class="row col-12">
+            <div class="form-group col">
+              <label for="mobile">Mobile No</label>
+              <input type="text" class="form-control" id="mobile" formControlName="mobileNumber"  placeholder="Enter mobile">
+              <div *ngIf="userregisterForm.controls['mobileNumber']?.touched || userregisterForm.controls['mobileNumber']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('required', 'mobileNumber')">mobile number required</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'mobileNumber') || userregisterForm.hasError('maxlength', 'mobileNumber')">exactly 10 digits allowed</div>
+              </div>
+            </div>
+            <div class="form-group col">
+              <label for="speciality">Email</label>
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+              <div *ngIf="userregisterForm.controls['email']?.touched || userregisterForm.controls['email']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('required', 'email')">email required</div>
+              </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <div class="form-group col">
+              <label for="pin">Pin code</label>
+              <input type="text" class="form-control" id="pin" formControlName="email"  placeholder="Enter Pin">
+              <div *ngIf="userregisterForm.controls['pincode']?.touched || userregisterForm.controls['pincode']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'pincode')">minimun 6 digits required</div>
+              </div>
+            </div>
+            <div class="form-group col">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" formControlName="city" placeholder="city">
+              <div *ngIf="userregisterForm.controls['city']?.touched || userregisterForm.controls['city']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('maxlength', 'city')">max 20 letters allowed</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'city')">min 6 letters required</div>
+              </div>
+            </div>
+        </div>
+        <div class="row col-12">
+            <div class="form-group col">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state" formControlName="state" placeholder="Enter state">
+              <div *ngIf="userregisterForm.controls['state']?.touched || userregisterForm.controls['state']?.dirty">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('maxlength', 'state')">max 20 letters allowed</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'state')">min 6 letters required</div>
+              </div>
+            </div>
+            <div class="form-group col">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country" formControlName="country" placeholder="country">
+              <div *ngIf="userregisterForm.controls['country']?.touched || userregisterForm.touched">
+                <div style="color: red;" *ngIf="userregisterForm.hasError('maxlength', 'country')">max 20 letters allowed</div>
+                <div style="color: red;" *ngIf="userregisterForm.hasError('minlength', 'country')">min 6 letters required</div>
+              </div>
+            </div>
+        </div>
+        <div class="col text-center">
+            <button type="submit" class="btn btn-success col-6 mb-5">Submit</button>
+        </div>
+          </form>
+    </div>
+    </div>
+      </div>
+    </div>
+</div>
