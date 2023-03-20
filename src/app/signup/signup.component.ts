@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { SignupService } from './signup.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
 
 
 
-  constructor( private router:ActivatedRoute,private builder:FormBuilder) {
+  constructor( private router:ActivatedRoute,private builder:FormBuilder, private service:SignupService) {
     this.router.params.subscribe(a=>console.log(this.role=a['role']));
     this.role === 'user'?this.user=true:'';
     this.role === 'coach'?this.coach=true:'';
@@ -53,8 +54,18 @@ export class SignupComponent implements OnInit {
   
   userSignup()
   {
-    console.log(this.userregisterForm.valid);
-    this.errorMessage=true;
+    if(this.userregisterForm.valid)
+    {
+      this.service.saveUser(this.userregisterForm.value).subscribe({
+        next: (v) => console.log(v),
+        error: (e) => console.error(e),
+        complete: () => console.info('complete') 
+    })
+
+    }
+    else{
+      this.errorMessage=true;
+    }
     
   }
 

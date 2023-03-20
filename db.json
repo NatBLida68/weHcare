@@ -25,6 +25,19 @@
       "state": "Kerala",
       "country": "India",
       "id": 2
+    },
+    {
+      "name": "Aswajith c k",
+      "password": "1234567",
+      "dateOfBirth": "12/10/1997",
+      "gender": "Male",
+      "mobileNumber": "8156901886",
+      "email": "aswajith.jithu888@gmail.com",
+      "pincode": "122345",
+      "city": "calicut",
+      "state": "kerala",
+      "country": "india1",
+      "id": 3
     }
   ],
   "coaches": [

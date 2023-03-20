@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -7,14 +8,11 @@ import { FormControl } from '@angular/forms';
 })
 export class SignupService {
 
-  constructor() { }
+  constructor(private http :HttpClient) { }
+url:string = "http://localhost:3000";
 
-  static ageValidator(control: FormControl) {
-    if (control.value) {
-        const matches = control.value.match(/^[A-Za-z\s]+$/);
-        return matches ? null : { 'invalidName': true };
-    } else {
-        return null;
-    }
+saveUser(data:any){
+  return this.http.post(this.url+'/users',data)
 }
+
 }
